@@ -9,8 +9,13 @@ public class Berserk extends Hero {
 
     @Override
     public void applySuperPower(Boss boss, Hero[] heroes) {
-        int coeff = RPG_Game.random.nextInt(50);
-            boss.setHealth(boss.getHealth() - (this.getDamage() + coeff));
-                System.out.println("Berserk атакует " + (this.getDamage() + coeff));
+       int bossDamage = boss.getDamage() / 2;
+        for (int i = 0; i < heroes.length ; i++) {
+            if (heroes.length > 0) {
+                boss.setHealth(boss.getHealth() - bossDamage);
+                this.setHealth(this.getHealth() + bossDamage);
+            }
+        }
+        System.out.println("Berserk использовал суперсилу");
     }
 }
